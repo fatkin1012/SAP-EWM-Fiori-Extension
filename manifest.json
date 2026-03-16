@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "SAP EWM Wave Status Monitor",
+  "version": "2.1.0",
+  "description": "Highlights red/yellow wave icons and blocks Release All (F9) when errors exist.",
+  "host_permissions": [
+    "https://ewm-qas.apac.sap.nexperia.com/*"
+  ],
+  "permissions": [],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://ewm-qas.apac.sap.nexperia.com/sap/bc/ui2/flp*",
+        "https://ewm-qas.apac.sap.nexperia.com/sap/bc/gui/sap/its/webgui*",
+        "https://ewm-qas.apac.sap.nexperia.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "icons": {
+    "128": "icon.png"
+  }
+}
